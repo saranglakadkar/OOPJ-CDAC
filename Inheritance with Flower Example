@@ -1,0 +1,102 @@
+/*Homework:
+Java Implementation Question: Simple Inheritance with Flower Example
+Problem Statement:
+Create a base class (Flower) that contains common properties such as:
+
+name (flower's name)
+color (flower's color)
+hasFragrance (whether the flower has a fragrance or not)
+Then, create two subclasses (Rose and Lily) that inherit properties from Flower and add their own specific characteristics:
+
+Rose class should have an extra property hasThorns (to check if the rose has thorns).
+Lily class should have an extra property isWaterPlant (to check if the lily grows in water).
+Write a Java program that allows creating objects of Rose and Lily, setting their properties, and displaying the details.
+
+Sample Input & Output:
+Input:
+The program should create a Rose and a Lily object with the following properties:
+
+Rose: Red, has fragrance, has thorns
+Lily: White, has fragrance, grows in water
+*/
+
+//👇 Program Start..........👇
+
+import java.util.*;
+class Flower{
+  String name;
+  String color;
+  Boolean HasFragnes;
+  
+  Flower(String name,String color,Boolean HasFragnes){
+    this.name = name;
+    this.color = color;
+    this.HasFragnes = HasFragnes;
+  }
+  
+  void DisplayF(){
+    System.out.println("Flower Name: "+name);
+    System.out.println("color: "+color);
+    
+    if(HasFragnes==true){
+     System.out.println("HasFragnes: yes"); 
+    }else{
+      System.out.println("HasFragnes: No");
+    }
+  }
+}
+class Rose extends Flower{
+  Boolean hasThorns;
+  Rose(String name, String color, Boolean HasFragnes, Boolean hasThorns){
+     super(name, color, HasFragnes);
+      this.hasThorns = hasThorns;
+  }
+    
+    void DisplayR(){
+        System.out.println("------------ Rose Details ------------");
+       super.DisplayF();
+        if(hasThorns==true){
+         System.out.println("hasThorns: yes");
+      }else{
+          System.out.println("hasThorns: No");
+      }
+    }
+}
+class Lily extends Flower{
+  Boolean isWaterPlant;
+  
+  Lily(String name, String color, Boolean HasFragnes, Boolean isWaterPlant) {
+        super(name, color, HasFragnes);
+       this.isWaterPlant = isWaterPlant;
+  }
+  
+  void DisplayL(){
+    System.out.println("----------- Lily Details -------------");
+    super.DisplayF();
+    if(isWaterPlant==true){
+      System.out.println("isWaterPlant: yes");
+    }else{
+      System.out.println("isWaterPlant: No");
+    }
+  }
+}
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter Name: ");
+    String name = sc.nextLine();
+    System.out.println("enteR Color: ");
+    String color = sc.nextLine();
+    System.out.println("HasFragnes??? type true or false");
+    Boolean HasFragnes = sc.nextBoolean();
+    System.out.println("hasThorns??? type true or false");
+    Boolean hasThorns = sc.nextBoolean();
+    System.out.println("isWaterPlant?? Type true or false");
+    Boolean isWaterPlant = sc.nextBoolean();
+    
+       Rose r = new Rose(name,color,HasFragnes,hasThorns); //For Rose Flower
+      r.DisplayR();
+      Lily L = new Lily(name,color,HasFragnes,isWaterPlant); //For Lily Flower
+      L.DisplayL();
+  }
+}
